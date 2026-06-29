@@ -1,27 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-YOLOV5_DIR="${YOLOV5_DIR:-external/yolov5}"
-DATA_YAML="${DATA_YAML:-configs/yolov5_data.example.yaml}"
-WEIGHTS="${WEIGHTS:-yolov5s.pt}"
-IMG_SIZE="${IMG_SIZE:-640}"
-BATCH_SIZE="${BATCH_SIZE:-16}"
-EPOCHS="${EPOCHS:-80}"
-PROJECT="${PROJECT:-models/yolov5/runs}"
-NAME="${NAME:-smartcar_yolov5}"
+CONFIG="${CONFIG:-configs/yolov5_finetune.yaml}"
+ARGS=(--config "$CONFIG")
 
-if [ ! -f "$YOLOV5_DIR/train.py" ]; then
-  echo "YOLOv5 not found. Run: bash ml/yolov5/fetch_yolov5.sh"
-  exit 2
-fi
+if [ -n "${YOLOV5_DIR:-}" ]; then ARGS+=(--yolov5-dir "$YOLOV5_DIR"); fi
+if [ -n "${WEIGHTS:-}" ]; then ARGS+=(--weights "$WEIGHTS"); fi
+if [ -n "${IMG_SIZE:-}" ]; then ARGS+=(--img-size "$IMG_SIZE"); fi
+if [ -n "${BATCH_SIZE:-}" ]; then ARGS+=(--batch-size "$BATCH_SIZE"); fi
+if [ -n "${EPOCHS:-}" ]; then ARGS+=(--epochs "$EPOCHS"); fi
+if [ -n "${DEVICE:-}" ]; then ARGS+=(--device "$DEVICE"); fi
+if [ -n "${NAME:-}" ]; then ARGS+=(--name "$NAME"); fi
 
-python "$YOLOV5_DIR/train.py" \
-  --img "$IMG_SIZE" \
-  --batch "$BATCH_SIZE" \
-  --epochs "$EPOCHS" \
-  --data "$DATA_YAML" \
-  --weights "$WEIGHTS" \
-  --project "$PROJECT" \
-  --name "$NAME" \
-  --cache
-
+python ml/yolov5/train_smartcar.py "${ARGS[@]}" "$@"

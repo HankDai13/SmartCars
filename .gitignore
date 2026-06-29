@@ -19,8 +19,12 @@ ros2_ws/log/
 tmp/
 logs/
 *.log
+reports/dataset_visualization*/
+reports/park_relabel_preview*/
 data/raw/**
 data/processed/**
+data/imported/**
+data/relabel/**
 data/yolo/**
 data/lfnet/**
 data/lanenet_hnet/**
@@ -28,6 +32,8 @@ data/lanenet_hnet/**
 !data/**/.gitkeep
 
 # Model artifacts are large and should be archived separately.
+models/yolov5/generated/
+models/yolov5/runs/
 models/**/*.pt
 models/**/*.pth
 models/**/*.onnx
@@ -46,4 +52,3 @@ external/yolov5/
 Thumbs.db
 .idea/
 .vscode/
-

@@ -1,0 +1,44 @@
+# SmartCars YOLOv5 fine-tuning config.
+#
+# This file is consumed by ml/yolov5/train_smartcar.py. The wrapper validates the
+# unified dataset, writes an absolute YOLOv5 data yaml, then calls
+# external/yolov5/train.py.
+
+dataset:
+  root: data/yolo
+  generated_data_yaml: models/yolov5/generated/smartcar_data.yaml
+  train: images/train
+  val: images/val
+  test: images/test
+  names:
+    0: left
+    1: right
+    2: turnaround
+    3: park
+    4: person
+    5: obstacle
+    6: crosswalk
+
+yolov5:
+  dir: external/yolov5
+  weights: yolov5s.pt
+
+train:
+  img_size: 640
+  batch_size: 16
+  epochs: 120
+  workers: 8
+  device: ""
+  project: models/yolov5/runs
+  name: smartcar_yolov5
+  optimizer: SGD
+  patience: 30
+  seed: 42
+  cache: ram
+  exist_ok: false
+  save_period: 10
+  freeze: 0
+  label_smoothing: 0.0
+  rect: false
+  multi_scale: false
+  cos_lr: false
