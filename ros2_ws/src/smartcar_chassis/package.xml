@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>smartcar_chassis</name>
+  <version>0.1.0</version>
+  <description>Chassis adapter for the original smart car controller.</description>
+  <maintainer email="team@example.com">SmartCars Team</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_python</buildtool_depend>
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>smartcar_interfaces</exec_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
+

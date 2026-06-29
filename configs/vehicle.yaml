@@ -1,0 +1,31 @@
+vehicle:
+  serial_port: /dev/ttyUSB0
+  baudrate: 115200
+  control_mode: action_command
+  enable_hardware: false
+
+  # Tune these after manual-mode calibration on the actual car.
+  motor_rating:
+    front_left: 1.0
+    front_right: 1.0
+    rear_left: 1.0
+    rear_right: 1.0
+
+  speed:
+    crawl: 0.18
+    normal: 0.32
+    turn: 0.22
+
+  steering:
+    center_angle: 90.0
+    max_angle: 135.0
+    min_angle: 0.0
+    deadband_deg: 5.0
+
+  safety:
+    stop_on_missing_lane: true
+    detection_cooldown_s: 1.5
+    emergency_classes:
+      - person
+      - obstacle
+

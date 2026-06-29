@@ -1,0 +1,64 @@
+camera_node:
+  ros__parameters:
+    camera_index: 0
+    frame_id: camera_link
+    width: 640
+    height: 480
+    fps: 20.0
+    topic: /camera/image_raw
+
+lane_lfnet_node:
+  ros__parameters:
+    image_topic: /camera/image_raw
+    lane_topic: /perception/lane
+    backend: mock
+    model_path: models/lfnet/lfnet.onnx
+    input_width: 320
+    input_height: 180
+    center_angle: 90.0
+    mock_valid: true
+
+sign_yolo_node:
+  ros__parameters:
+    image_topic: /camera/image_raw
+    detection_topic: /perception/detections
+    backend: mock
+    model_path: models/yolov5/smartcar_yolov5.onnx
+    input_size: 640
+    confidence_threshold: 0.35
+    nms_threshold: 0.45
+    class_names: [left, right, turnaround, park, person, obstacle, crosswalk]
+
+decision_node:
+  ros__parameters:
+    lane_topic: /perception/lane
+    detection_topic: /perception/detections
+    agent_topic: /agent/advice
+    action_topic: /decision/action_command
+    decision_hz: 10.0
+    normal_speed: 0.32
+    slow_speed: 0.18
+    min_detection_confidence: 0.35
+    detection_cooldown_s: 1.5
+    enable_agent_advice: false
+    emergency_classes: [person, obstacle]
+
+chassis_node:
+  ros__parameters:
+    action_topic: /decision/action_command
+    status_topic: /chassis/status
+    enable_hardware: false
+    car_python_path: external/ascend-devkit/src/E2E-Sample/Car/python
+    center_angle: 90.0
+    deadband_deg: 5.0
+
+agent_node:
+  ros__parameters:
+    enabled: false
+    policy_backend: rule
+    lane_topic: /perception/lane
+    detection_topic: /perception/detections
+    status_topic: /chassis/status
+    advice_topic: /agent/advice
+    agent_hz: 2.0
+

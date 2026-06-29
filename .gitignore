@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+env/
+
+# ROS2 / colcon
+ros2_ws/build/
+ros2_ws/install/
+ros2_ws/log/
+.colcon/
+
+# Local data, generated artifacts, and logs
+tmp/
+logs/
+*.log
+data/raw/**
+data/processed/**
+data/yolo/**
+data/lfnet/**
+data/lanenet_hnet/**
+!data/**/README.md
+!data/**/.gitkeep
+
+# Model artifacts are large and should be archived separately.
+models/**/*.pt
+models/**/*.pth
+models/**/*.onnx
+models/**/*.om
+models/**/*.engine
+models/**/*.bin
+models/**/*.param
+!models/**/README.md
+
+# Third-party source checkouts
+external/ascend-devkit/
+external/yolov5/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+

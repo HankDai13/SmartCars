@@ -1,0 +1,17 @@
+dataset:
+  csv: data/lfnet/labels.csv
+  image_root: data/lfnet/images
+  val_ratio: 0.15
+
+model:
+  input_width: 320
+  input_height: 180
+  angle_min: 0.0
+  angle_max: 135.0
+
+train:
+  epochs: 40
+  batch_size: 32
+  learning_rate: 0.0003
+  output_dir: models/lfnet/runs/baseline
+

@@ -1,0 +1,17 @@
+dataset:
+  image_root: data/lanenet_hnet/images
+  binary_mask_root: data/lanenet_hnet/binary_masks
+  instance_mask_root: data/lanenet_hnet/instance_masks
+  split_csv: data/lanenet_hnet/splits.csv
+
+model:
+  input_width: 512
+  input_height: 256
+  embedding_dim: 4
+
+train:
+  epochs: 60
+  batch_size: 8
+  learning_rate: 0.0001
+  output_dir: models/lanenet_hnet/runs/baseline
+

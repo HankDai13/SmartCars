@@ -1,0 +1,18 @@
+topics:
+  camera: /camera/image_raw
+  lane: /perception/lane
+  detections: /perception/detections
+  action_command: /decision/action_command
+  chassis_status: /chassis/status
+  agent_advice: /agent/advice
+
+frames:
+  camera: camera_link
+  base: base_link
+
+rates:
+  camera_fps: 20
+  perception_hz: 15
+  decision_hz: 10
+  chassis_feedback_hz: 10
+

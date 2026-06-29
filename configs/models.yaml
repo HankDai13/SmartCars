@@ -1,0 +1,36 @@
+models:
+  yolov5:
+    classes:
+      - left
+      - right
+      - turnaround
+      - park
+      - person
+      - obstacle
+      - crosswalk
+    input_size: 640
+    onnx_path: models/yolov5/smartcar_yolov5.onnx
+    om_path: models/yolov5/smartcar_yolov5.om
+    confidence_threshold: 0.35
+    nms_threshold: 0.45
+
+  lfnet:
+    input_width: 320
+    input_height: 180
+    angle_min: 0.0
+    angle_max: 135.0
+    center_angle: 90.0
+    onnx_path: models/lfnet/lfnet.onnx
+    om_path: models/lfnet/lfnet.om
+
+  lanenet_hnet:
+    input_width: 512
+    input_height: 256
+    embedding_dim: 4
+    onnx_path: models/lanenet_hnet/lanenet_hnet.onnx
+    om_path: models/lanenet_hnet/lanenet_hnet.om
+
+ascend:
+  soc_version: Ascend310B4
+  cann_env: /usr/local/Ascend/ascend-toolkit/set_env.sh
+

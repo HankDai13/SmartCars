@@ -1,0 +1,14 @@
+path: data/yolo
+train: images/train
+val: images/val
+test: images/test
+
+names:
+  0: left
+  1: right
+  2: turnaround
+  3: park
+  4: person
+  5: obstacle
+  6: crosswalk
+
